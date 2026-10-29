@@ -1,6 +1,12 @@
 import "./globals.css";
 import { CartProvider } from "./cart-context";
 import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+});
 
 export const metadata: Metadata = {
   title: "Ghar Ka Zaiqa",
@@ -18,7 +24,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={geist.variable}>
       <body><CartProvider>{children}</CartProvider></body>
     </html>
   );
