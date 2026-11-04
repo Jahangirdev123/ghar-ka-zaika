@@ -16,7 +16,7 @@ export default function CartPage(){
     let msg = `*GHAR KA ZAIQA - NEW ORDER*%0A%0A`;
     cart.forEach((c:any,i:any)=> msg+=`${i+1}. ${c.name} x${c.qty} = Rs ${c.price*c.qty}%0A`);
     msg+=`%0A*Total: Rs ${total}*%0A%0A*Customer:*%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}`;
-    const num = "923001234567";
+    const num = "923237035144";
     window.open(`https://wa.me/${num}?text=${msg}`, "_blank");
     clear();
   };
