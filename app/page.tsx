@@ -26,7 +26,13 @@ function ProductCard({p}:any){
         <div className="flex justify-between items-center mt-3">
           <span className="font-bold text-green-800">Rs {p.price}</span>
           {!inCart ? (
-            <button onClick={()=>addToCart(p)} className="bg-green-700 text-white px-4 py-1.5 rounded-full text-xs font-bold">+ Add</button>
+             <button 
+              onClick={()=>addToCart(p)} 
+              className="add-btn"
+              style={{ backgroundColor: '#15803d', color: '#fff', padding: '8px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 700, border: 'none' }}
+            >
+              + Add
+            </button>
           ) : (
             <div className="flex items-center gap-2 bg-green-50 rounded-full border px-1 py-1">
               <button onClick={()=>decQty(p.id)} className="w-7 h-7 bg-white rounded-full border font-bold shadow-sm">-</button>
