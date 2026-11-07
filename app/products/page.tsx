@@ -17,41 +17,41 @@ const allProducts = [
 export default function ProductsPage(){
   const {cart, addToCart, decQty, count} = useCart();
   return (
-    <main className="min-h-screen bg-[#fafafa]">
-      <nav className="bg-white border-b sticky top-0 z-20">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-3">
+    <main className="app-page">
+      <nav className="site-nav">
+        <div className="site-nav__inner site-nav__inner--wide site-nav__inner--compact">
+          <Link href="/" className="brand-link">
             <Image
               src="/icon-192.png"
               alt="Ghar Ka Zaiqa logo"
               width={40}
               height={40}
-              className="rounded-full object-cover"
+              className="brand-logo"
             />
-            <span className="font-bold text-green-900">Ghar Ka Zaiqa</span>
+            <span className="brand-title">Ghar Ka Zaiqa</span>
           </Link>
-          <Link href="/cart" className="bg-green-700 text-white px-4 py-2 rounded-full text-sm">🛒 Cart ({count})</Link>
+          <Link href="/cart" className="cart-link cart-link--compact">🛒 Cart ({count})</Link>
         </div>
       </nav>
-      <div className="max-w-7xl mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4">All Products ({allProducts.length})</h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="site-container site-container--wide site-container--products">
+        <h1 className="page-title">All Products ({allProducts.length})</h1>
+        <div className="products-grid">
           {allProducts.map(p=>{
             const inCart = cart.find((c:any)=>c.id===p.id);
             return (
-              <div key={p.id} className="bg-white rounded-2xl overflow-hidden border">
-                <img src={p.img} className="w-full h-[130px] object-cover" />
-                <div className="p-3">
-                  <h3 className="font-bold text-sm">{p.name}</h3>
-                  <p className="text-xs text-gray-500">{p.desc} - Rs {p.price}</p>
-                  <div className="mt-2">
+              <div key={p.id} className="product-card">
+                <img src={p.img} className="product-card__image" alt={p.name} />
+                <div className="product-card__body">
+                  <h3 className="product-card__name">{p.name}</h3>
+                  <p className="product-card__description">{p.desc} - Rs {p.price}</p>
+                  <div className="product-card__actions">
                   {!inCart ? (
-                    <button onClick={()=>addToCart(p)} className="w-full bg-green-700 text-white py-1.5 rounded-full text-xs">+ Add</button>
+                    <button onClick={()=>addToCart(p)} className="product-add-button product-add-button--full">+ Add</button>
                   ) : (
-                    <div className="flex justify-between items-center bg-green-50 rounded-full border px-2 py-1">
-                      <button onClick={()=>decQty(p.id)} className="w-6 h-6 bg-white rounded-full border">-</button>
-                      <span className="text-sm font-bold">{inCart.qty}</span>
-                      <button onClick={()=>addToCart(p)} className="w-6 h-6 bg-green-700 text-white rounded-full">+</button>
+                    <div className="quantity-control quantity-control--spaced">
+                      <button onClick={()=>decQty(p.id)} className="quantity-button quantity-button--small">-</button>
+                      <span className="quantity-count">{inCart.qty}</span>
+                      <button onClick={()=>addToCart(p)} className="quantity-button quantity-button--small quantity-button--add">+</button>
                     </div>
                   )}
                   </div>

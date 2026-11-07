@@ -38,7 +38,7 @@ export default function InstallButton() {
     <button
       type="button"
       onClick={installApp}
-      className="rounded-full border border-green-700 px-6 py-3 font-bold text-green-800"
+      className="install-button"
     >
       Install app
     </button>
